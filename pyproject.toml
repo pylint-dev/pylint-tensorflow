@@ -47,6 +47,10 @@ version = {attr = "pylint_tensorflow.__init__.__version__"}
 [tool.aliases]
 test = "pytest"
 
+[tool.pylint]
+
+disable = ["missing-docstring"]
+
 [tool.ruff]
 
 # ruff is less lenient than pylint and does not make any exceptions
