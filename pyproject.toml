@@ -1,0 +1,72 @@
+[build-system]
+requires = ["setuptools~=62.6", "wheel~=0.37.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name        = "pylint-tensorflow"
+license     = {text = "MIT"}
+description = "python code static checker tensorflow"
+keywords    = ["static code analysis", "linter", "python", "lint"]
+classifiers = [
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "Topic :: Software Development :: Debuggers",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: Software Development :: Testing",
+    "Typing :: Typed"
+]
+requires-python = ">=3.8.0"
+dependencies    = [
+    "astroid>=3.0.0a2,<=3.1.0-dev0",
+    "typing-extensions>=3.10.0;python_version<'3.10'",
+]
+dynamic = ["version"]
+
+[project.optional-dependencies]
+testutils = ["gitpython>3"]
+
+[tool.setuptools]
+license-files = ["LICENSE"]
+
+[tool.setuptools.packages.find]
+include = ["pylint_tensorflow*"]
+
+[tool.setuptools.dynamic]
+version = {attr = "pylint_tensorflow.__init__.__version__"}
+
+[tool.aliases]
+test = "pytest"
+
+[tool.ruff]
+
+# ruff is less lenient than pylint and does not make any exceptions
+# (for docstrings, strings and comments in particular).
+line-length = 115
+
+select = [
+    "E",  # pycodestyle
+    "F",  # pyflakes
+    "W",  # pycodestyle
+    "B",  # bugbear
+    "I",  # isort
+    "RUF", # ruff
+]
+
+fixable = [
+    "E",  # pycodestyle
+    "F",  # pyflakes
+    "W",  # pycodestyle
+    "B",  # bugbear
+    "I",  # isort
+    "RUF", # ruff
+]
