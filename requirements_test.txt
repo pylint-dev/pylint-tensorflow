@@ -1,0 +1,8 @@
+-r requirements_test_pre_commit.txt
+-r requirements_test_min.txt
+coverage~=7.2
+pytest-cov~=4.0
+pytest-profiling~=1.7
+pytest-xdist~=3.2
+# Type packages for mypy
+types-pkg_resources==0.1.3

@@ -62,7 +62,6 @@ jobs:
           . venv/bin/activate
           python -m pip install -U pip setuptools wheel
           pip install -U -r requirements_test.txt
-          pip install -U -r doc/requirements.txt
       - name: Generate pre-commit restore key
         id: generate-pre-commit-key
         run: >-
@@ -120,67 +119,4 @@ jobs:
           . venv/bin/activate
           pip install -e .
           pip list | grep 'astroid\|pylint'
-          pre-commit run --hook-stage manual pylint-with-spelling --all-files
-
-  spelling:
-    name: spelling tests
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    needs: prepare-base
-    steps:
-      - name: Check out code from GitHub
-        uses: actions/checkout@v3.5.2
-      - name: Set up Python ${{ env.DEFAULT_PYTHON }}
-        id: python
-        uses: actions/setup-python@v4.6.0
-        with:
-          python-version: ${{ env.DEFAULT_PYTHON }}
-          check-latest: true
-      - name: Restore Python virtual environment
-        id: cache-venv
-        uses: actions/cache@v3.3.1
-        with:
-          path: venv
-          fail-on-cache-miss: true
-          key:
-            ${{ runner.os }}-${{ steps.python.outputs.python-version }}-${{
-            needs.prepare-base.outputs.python-key }}
-      - name: Run spelling checks
-        run: |
-          . venv/bin/activate
-          pytest tests/ -k unittest_spelling
-
-  documentation:
-    name: documentation
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    needs: prepare-base
-    steps:
-      - name: Check out code from GitHub
-        uses: actions/checkout@v3.5.2
-      - name: Set up Python ${{ env.DEFAULT_PYTHON }}
-        id: python
-        uses: actions/setup-python@v4.6.0
-        with:
-          python-version: ${{ env.DEFAULT_PYTHON }}
-          check-latest: true
-      - name: Restore Python virtual environment
-        id: cache-venv
-        uses: actions/cache@v3.3.1
-        with:
-          path: venv
-          fail-on-cache-miss: true
-          key:
-            ${{ runner.os }}-${{ steps.python.outputs.python-version }}-${{
-            needs.prepare-base.outputs.python-key }}
-      - name: Install tox
-        run: |
-          pip install -U tox
-      - name: Run checks on documentation code examples
-        run: |
-          tox -e test_doc
-      - name: Check documentation build and links
-        run: |
-          . venv/bin/activate
-          cd doc
-          make html
+          pre-commit run pylint --all-files

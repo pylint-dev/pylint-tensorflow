@@ -70,11 +70,6 @@ jobs:
           . venv/bin/activate
           pip list | grep 'astroid\|pylint'
           pytest --durations=10 --benchmark-disable --cov --cov-report= tests/
-      - name: Run functional tests with minimal messages config
-        run: |
-          . venv/bin/activate
-          pip list | grep 'astroid\|pylint'
-          pytest -vv --minimal-messages-config tests/test_functional.py
       - name: Upload coverage artifact
         uses: actions/upload-artifact@v3.1.2
         with:

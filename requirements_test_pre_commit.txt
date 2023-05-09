@@ -1,0 +1,7 @@
+# This file is accurate as long as the version in pre-commit configuration
+# is the latest. We don't want to pin and have to upgrade all the time.
+pre-commit
+black
+ruff
+mypy
+pylint==3.0.0a6
