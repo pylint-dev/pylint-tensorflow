@@ -1,6 +1,6 @@
 -e .[testutils,spelling]
 astroid
-typing-extensions~=4.5
+typing-extensions~=4.6
 pytest~=7.3
 pytest-benchmark~=4.0
 pytest-timeout~=2.1
