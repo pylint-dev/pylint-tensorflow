@@ -4,4 +4,4 @@ pre-commit
 black
 ruff
 mypy
-pylint==3.0.0b0
+pylint==3.0.1
