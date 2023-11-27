@@ -3,6 +3,6 @@
 coverage~=7.2
 pytest-cov~=4.1
 pytest-profiling~=1.7
-pytest-xdist~=3.4
+pytest-xdist~=3.5
 # Type packages for mypy
 types-pkg_resources==0.1.3
