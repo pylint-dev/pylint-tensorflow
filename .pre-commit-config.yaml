@@ -3,17 +3,17 @@ ci:
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v5.0.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: "v0.1.6"
+    rev: "v0.6.9"
     hooks:
       - id: ruff
         args: ["--fix"]
   - repo: https://github.com/psf/black
-    rev: 23.11.0
+    rev: 24.10.0
     hooks:
       - id: black
         args: [--safe, --quiet]
@@ -26,7 +26,7 @@ repos:
         types: [python]
         args: ["-rn", "-sn", "--fail-on=I"]
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.7.1
+    rev: v1.11.2
     hooks:
       - id: mypy
         name: mypy
@@ -36,7 +36,7 @@ repos:
         args: []
         require_serial: true
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v3.1.0
+    rev: v4.0.0-alpha.8
     hooks:
       - id: prettier
         args: [--prose-wrap=always, --print-width=88]
