@@ -2,5 +2,5 @@
 astroid
 typing-extensions~=4.11
 pytest~=8.1
-pytest-benchmark~=4.0
+pytest-benchmark~=5.1
 pytest-timeout~=2.3
